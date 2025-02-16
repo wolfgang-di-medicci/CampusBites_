@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1073755892430",
+    "project_id": "mu-cafe-ticker-app",
+    "storage_bucket": "mu-cafe-ticker-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073755892430:android:7cb029a89621aa873bbe9f",
+        "android_client_info": {
+          "package_name": "com.example.cafeticker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDD3juVsIPk1Cg6-x3a824kg5w0zQ4Z6fo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
