@@ -75,6 +75,11 @@ public class TickFragment extends Fragment {
         ProgressBar progressBar = view.findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
 
+        if (username.isEmpty()) {
+            Toast.makeText(getContext(), "Please fill in all fields.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Output Fields
         TextView nameOutput = view.findViewById(R.id.textViewNameOutput);
         TextView departmentOutput = view.findViewById(R.id.textViewDepartmentOutput);

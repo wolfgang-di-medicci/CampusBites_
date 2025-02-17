@@ -40,6 +40,11 @@ public class LogInActivity extends AppCompatActivity {
         String username = ((EditText)findViewById(R.id.logInUsername)).getText().toString();
         String password = ((EditText)findViewById(R.id.logInNumberPassword)).getText().toString();
 
+        if (username.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Handle Log in
         // Handle Log in using encrypted shared preference
         SharedPreferences sharedPreferences = SecurePrefs.getEncryptedSharedPreferences(this);
@@ -71,6 +76,11 @@ public class LogInActivity extends AppCompatActivity {
     public void handleSubmit(View v) {
         String spinnerSelected = ((Spinner)findViewById(R.id.spinnerLogInQuestion)).getSelectedItem().toString();
         String logInAnswer = ((EditText)findViewById(R.id.logInAnswer)).getText().toString();
+
+        if (logInAnswer.isEmpty()) {
+            Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         // Handle Log in using encrypted shared preference
         SharedPreferences sharedPreferences = SecurePrefs.getEncryptedSharedPreferences(this);

@@ -42,16 +42,21 @@ public class SignUpActivity extends AppCompatActivity {
     public void handleSignUp(View v) {
         // Input Fields
         String name = ((EditText)findViewById(R.id.signUpName)).getText().toString();
-        String userName = ((EditText)findViewById(R.id.signUpUsername)).getText().toString();
+        String username = ((EditText)findViewById(R.id.signUpUsername)).getText().toString();
         String password = ((EditText)findViewById(R.id.signUpNumberPassword)).getText().toString();
         String question = ((Spinner)findViewById(R.id.spinnerSignUpQuestion)).getSelectedItem().toString();
         String answer = ((EditText)findViewById(R.id.signUpAnswer)).getText().toString();
+
+        if (name.isEmpty() || username.isEmpty() || password.isEmpty() || answer.isEmpty()) {
+            Toast.makeText(this, "Please fill in all fields.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         // handle Sign up using Encrypted shared preference
         SharedPreferences sharedPreferences = SecurePrefs.getEncryptedSharedPreferences(this); //Context was error check it out again
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("name", name);
-        editor.putString("username", userName);
+        editor.putString("username", username);
         editor.putString("password", password);
         editor.putString("question", question);
         editor.putString("answer", answer);

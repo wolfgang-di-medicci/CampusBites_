@@ -76,6 +76,11 @@ public class HomeFragment extends Fragment {
         SharedPreferences sharedPreferences = SecurePrefs.getEncryptedSharedPreferences(getContext());
         String ticker = sharedPreferences.getString("username", null);
 
+        if (date.isEmpty()) {
+            Toast.makeText(getContext(), "Please fill in date.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Query Fire store with the date and ticker
         db.collection("Meals")
                 .whereEqualTo("date", date)  // Ensure the date format is correct
