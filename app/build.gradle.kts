@@ -61,5 +61,7 @@ dependencies {
     implementation(libs.glide)
     annotationProcessor(libs.glide.compiler)
 
+    implementation(libs.biometric)
+
 
 }

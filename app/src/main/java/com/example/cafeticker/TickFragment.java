@@ -1,10 +1,13 @@
 package com.example.cafeticker;
 
 import android.content.SharedPreferences;
+import android.hardware.biometrics.BiometricManager;
+import android.hardware.biometrics.BiometricPrompt;
 import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +25,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.UUID;
+import java.util.concurrent.Executor;
 
 public class TickFragment extends Fragment {
 
@@ -37,11 +41,15 @@ public class TickFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.O)
     String date = today.toString(); // Format: YYYY-MM-DD
 
+    // Variables for biometric
+    private BiometricPrompt biometricPrompt;
+    // private BiometricPrompt.PromptInfo promptInfo;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         view = inflater.inflate(R.layout.fragment_tick, container, false);
 
         // Search & Retrieve from Fire store
@@ -248,21 +256,21 @@ public class TickFragment extends Fragment {
         if (hour >= 6 && (hour < 9 || (hour == 9 && minute == 0))) {
             breakfast.setVisibility(View.VISIBLE);
         } else {
-            breakfast.setVisibility(View.GONE);
+            breakfast.setEnabled(false);
         }
 
         // Lunch: 11:00 AM - 1:00 PM
         if (hour >= 11 && (hour < 13 || (hour == 13 && minute == 0))) {
             lunch.setVisibility(View.VISIBLE);
         } else {
-            lunch.setVisibility(View.GONE);
+            lunch.setEnabled(false);
         }
 
         // Dinner: 5:00 PM - 7:00 PM
         if (hour >= 17 && (hour < 19 || (hour == 19 && minute == 0))) {
             dinner.setVisibility(View.VISIBLE);
         } else {
-            dinner.setVisibility(View.GONE);
+            dinner.setEnabled(false);
         }
     }
 
