@@ -29,9 +29,7 @@ import java.util.concurrent.Executor;
 
 public class TickFragment extends Fragment {
 
-    public TickFragment() {
-        // Required empty public constructor
-    }
+    public TickFragment() {}
 
     // Global Variables
     private View view;
@@ -41,10 +39,6 @@ public class TickFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.O)
     String date = today.toString(); // Format: YYYY-MM-DD
 
-    // Variables for biometric
-    private BiometricPrompt biometricPrompt;
-    // private BiometricPrompt.PromptInfo promptInfo;
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,9 +46,16 @@ public class TickFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_tick, container, false);
 
+        // Search by Finger print
+        Button btnFinger = view.findViewById(R.id.btnFinger);
+        btnFinger.setOnClickListener(view1 -> handleSearchByFingerPrint());
+
         // Search & Retrieve from Fire store
         Button btnSearch = view.findViewById(R.id.btnSearch);
         btnSearch.setOnClickListener(view1 -> handleSearch());
+
+
+
 
         // Meal Buttons
         Button btnBreakfast = view.findViewById(R.id.btnBreakfast);
@@ -125,6 +126,12 @@ public class TickFragment extends Fragment {
                     }
                     progressBar.setVisibility(View.INVISIBLE);
                 });
+    }
+
+    // Finger print trial
+    public void handleSearchByFingerPrint() {
+        FingerPrintUse fingerprint = new FingerPrintUse(getActivity());
+        fingerprint.authenticate();
     }
 
     // Display user image after search using glide

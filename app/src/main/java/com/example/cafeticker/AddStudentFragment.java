@@ -101,6 +101,11 @@ public class AddStudentFragment extends Fragment {
             // No image selected, proceed to add student without image
             addStudentToFirestore(student, null, progressBar);
         }
+
+        FingerPrintUse fingerprint = new FingerPrintUse(getActivity());
+        fingerprint.linkStudent(username); // Replace with the actual username
+        fingerprint.authenticate();
+
     }
 
     // Upload Image to Cloudinary

@@ -12,7 +12,7 @@
 
         <EditText
             android:id="@+id/tickUsername"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="48dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
@@ -204,6 +204,18 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btnFinger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/button_background"
+            android:text="Biometric"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/btnSearch"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
